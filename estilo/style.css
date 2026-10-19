@@ -1,0 +1,390 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Manufacturing+Consent&family=Nosifer&display=swap');
+
+/* ---------- BASE ---------- */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+/*Menu Superior*/
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+.logo img {
+    height: 50px;
+    display: block;
+    position: relative;
+    top: -10px;     /* negativo sobe, positivo desce */
+    left: 20px;     /* positivo vai para a direita, negativo para a esquerda */
+}
+header > nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+}
+nav > a {
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+nav a:hover {
+    background-color: blueviolet;
+}
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        padding: 10px 12px;
+        gap: 6px;
+    }
+
+    .logo img {
+        height: 40px;
+        top: 0;
+        left: 0;
+    }
+
+    header > nav {
+        position: static;        /* volta para o fluxo normal */
+        transform: none;         /* remove o translateX(-50%) */
+        display: flex;
+        flex-wrap: wrap;         /* se faltar espaço, quebra de forma organizada */
+        justify-content: center;
+        gap: 4px;
+    }
+
+    nav > a {
+        font-size: 14px;
+        padding: 6px 10px;
+        white-space: nowrap;
+    }
+}
+
+/* ---------- PÁGINA 1 (hero + sobre, mesmo papel de parede) ---------- */
+.pagina-inicial {
+    background-image: url("../imagens/imagem-wpp01.jpg");
+    background-size: cover;
+    background-position: center top;   /* mostra o topo da imagem (letras em japonês) */
+    background-repeat: no-repeat;
+    background-attachment: fixed;      /* efeito parallax */
+    padding-bottom: 80px;
+}
+
+/* primeira tela: ocupa a janela inteira, então o "Sobre" só aparece ao rolar */
+.tela-inicial {
+    min-height: 100vh;
+    padding-top: 110px;                /* espaço do menu fixo */
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    width: 700px;
+    max-width: calc(100% - 32px);
+    padding: 50px;
+    border: 1px solid rgba(101, 101, 101, 0.148);
+    border-radius: 14px;
+    margin: 10px auto;
+    text-align: center;
+    box-shadow: 6px 6px 20px 0px rgba(16, 16, 16, 0.674);
+}
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: blueviolet;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    transition-duration: 0.5s;
+}
+
+.btn:hover {
+    background-color: #7a2cc4;
+}
+
+/* ---------- TEXTOS ---------- */
+div > h1 {
+    color: white;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3.3rem;
+}
+
+div > p {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+}
+
+/* ---------- SOBRE ---------- */
+.sobre {
+    display: flex;
+    flex-direction: row;             /* lado a lado */
+    justify-content: center;         /* centraliza o conjunto na página */
+    align-items: stretch;            /* caixa com a altura da foto */
+    gap: 0;
+    width: calc(100% - 32px);
+    max-width: 1100px;
+    margin: 40px auto 0;
+    scroll-margin-top: 110px;        /* o menu não cobre o título ao clicar em "Sobre" */
+    box-sizing: border-box;
+    /* sem background aqui */
+}
+.sobre-foto {
+    width: 400px;
+    max-width: 45%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 14px 0 0 14px;
+}
+.segunda-caixa {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;     /* conteúdo no topo */
+    align-items: flex-start;
+    box-sizing: border-box;
+    padding: 24px;                   /* espaço entre o conteúdo e a borda da caixa */
+    text-align: left;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(101, 101, 101, 0.148);
+    border-radius: 0 14px 14px 0;
+    box-shadow: 6px 6px 20px 0px rgba(16, 16, 16, 0.674);
+}
+.titulo-sobre {
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    margin: 40px 0 0;                /* espaço acima do título */
+}
+.segunda-caixa p {
+    margin: 0 0 14px;                /* pequeno espaço entre parágrafos */
+    line-height: 1.4;                /* diminui o espaço entre as linhas */
+    text-align: left;
+}
+.segunda-caixa > h1,
+.segunda-caixa > h2 {
+    margin: 0 0 12px;                /* só um pequeno espaço entre o título e o texto */
+    line-height: 1.1;
+}
+/* ---------- PÁGINA 2 (outro papel de parede) ---------- */
+.segunda-pagina {
+    min-height: 100vh;
+    padding: 110px 40px 40px;
+    color: white;
+    background-image: url("../imagens/wallpaper2.jpg");   /* renomeie o arquivo, sem espaço */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;    /* parallax também aqui */
+}
+/* ---------- CELULAR ---------- */
+@media (max-width: 768px) {
+    .pagina-inicial,
+    .segunda-pagina {
+        background-attachment: scroll;   /* fixed costuma falhar no celular */
+    }
+
+    .sobre {
+        flex-direction: column;
+    }
+
+    .sobre-foto {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 14px 14px 0 0;
+    }
+
+    .segunda-caixa {
+        border-radius: 0 0 14px 14px;
+    }
+
+    div > h1 {
+        font-size: 2.2rem;
+    }
+
+    div > p {
+        font-size: 1.1rem;
+    }
+}
+#cafeteria {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    padding: 3rem;
+    max-width: 90rem;
+    margin: 3rem auto;
+}
+#cafeteria .box-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+#cafeteria .title {
+    color: white;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+#cafeteria .box-container .box {
+    text-align: center;
+    border: 1px solid white;
+    padding: 1rem;
+    border-radius: 20px;
+}
+
+#cafeteria .box-container .box img {
+    height: 4.5rem;
+    display: block;
+    margin: 0 auto;
+}
+#cafeteria .box-container .box h3 {
+    color: white;
+    font-size: 1.6rem;
+    margin: 0.2rem 0 0.3rem;
+    padding: 0;
+}
+#cafeteria .box-container .box h4{
+    color: white;
+    font-size: 1rem;
+    margin: 0.5rem 0 0.8rem;
+    padding: 0rem;
+}
+#cafeteria .box-container .box:hover{
+    background-color: white;
+}
+#cafeteria .box-container .box:hover>* {
+    color: blueviolet;
+}
+#cafeteria .box-container .box:hover .btn {
+    color: white;
+}
+
+
+/* iPad / tablet */
+@media (max-width: 900px) {
+    #cafeteria {
+        padding: 2rem;
+        margin: 2rem 1rem;
+    }
+
+    #cafeteria .box-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Celular */
+@media (max-width: 600px) {
+    #cafeteria {
+        padding: 1.2rem;
+        margin: 1.5rem 0.8rem;
+        border-radius: 18px;
+    }
+
+    #cafeteria .box-container {
+        grid-template-columns: 1fr;
+    }
+
+    #cafeteria .box-container .box h3 {
+        font-size: 1.4rem;
+    }
+
+    #cafeteria .title {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+}
+------------------------------------------------------------
+ .fundo {
+    padding: 48px 20px;
+    background: url("SUA-IMAGEM.jpg") center / cover no-repeat,
+                linear-gradient(135deg, #ff7eb3, #6a82fb);
+  }
+
+  /* Caixa de vidro fosco */
+  .vidro {
+     background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    padding: 32px;
+  }
+
+  .contacto { max-width: 720px; margin: 0 auto; font-family: sans-serif; color:white; }
+  .contacto h3 { margin-top: 0; }
+  .linha { display: flex; gap: 20px; }
+  .linha label { flex: 1; }
+  .contacto label { display: block; margin-bottom: 16px; font-weight: bold; }
+  .contacto label span { color: #ff6b81; }
+
+  .contacto input[type="text"],
+  .contacto input[type="email"],
+  .contacto input[type="tel"],
+  .contacto textarea {
+    width: 100%; box-sizing: border-box; margin-top: 6px;
+    padding: 12px; font-size: 16px; color: white;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+  }
+  .contacto input:focus,
+  .contacto textarea:focus { outline: none; border-color: white; background: rgba(255, 255, 255, 0.28); }
+
+ .contacto button {
+  display: block; margin-left: auto; padding: 10px 24px;
+  background: #7c3aed; color: #fff;
+  border: 1px solid #7c3aed; border-radius: 10px;
+  font-size: 18px; cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.contacto button:hover {
+  background: #6d28d9; border-color: #6d28d9;
+  transform: translateY(-1px);
+}
+
+  .contacto .aceite { font-weight: normal; margin-top: 16px; }
+  .contacto a { color: #fff; }
+
+  .contacto textarea { resize: vertical; }
+
+@media (max-width: 600px) {
+  .fundo { padding: 24px 12px; }
+  .vidro { padding: 20px; border-radius: 16px; }
+  .linha { flex-direction: column; gap: 0; }
+  .contacto button { width: 100%; }
+}
