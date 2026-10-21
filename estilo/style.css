@@ -130,6 +130,15 @@ nav a:hover {
 .btn:hover {
     background-color: #7a2cc4;
 }
+/* ===== AJUSTE SÓ PARA CELULAR ===== */
+@media (max-width: 768px) {
+    .tela-inicial {
+        min-height: 100svh;          /* altura real visível no celular */
+        align-items: flex-start;     /* caixa começa do topo, não do centro */
+        padding-top: 140px;          /* 👈 AJUSTE AQUI: menor = caixa mais para cima */
+    }
+}
+/* ===== FIM DO AJUSTE CELULAR ===== */
 
 /* ---------- TEXTOS ---------- */
 div > h1 {
