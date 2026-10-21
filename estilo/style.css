@@ -135,7 +135,7 @@ nav a:hover {
     .tela-inicial {
         min-height: 100svh;          /* altura real visível no celular */
         align-items: flex-start;     /* caixa começa do topo, não do centro */
-        padding-top: 140px;          /* 👈 AJUSTE AQUI: menor = caixa mais para cima */
+        padding-top: 160px;          /* 👈 AJUSTE AQUI: menor = caixa mais para cima */
     }
 }
 /* ===== FIM DO AJUSTE CELULAR ===== */
